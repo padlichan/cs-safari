@@ -1,6 +1,7 @@
 ﻿using CS_Safari.Animals;
 using CS_Safari.Environments;
 using CS_Safari.Interfaces;
+using System.Globalization;
 
 namespace CS_Safari
 {
@@ -34,7 +35,7 @@ namespace CS_Safari
 
             hunting.CheckAnimalsInEnvironment();
 
-
+            
             List<Animal> animalsToSee = new List<Animal>
                 {
                   new Tiger(70),
@@ -49,6 +50,25 @@ namespace CS_Safari
             animalsToSee.Sort(comparer);
 
             animalsToSee.ForEach(animal => Console.WriteLine($" {animal.GetType().Name} - {animal.Weight}kg"));
+            
+            Console.WriteLine();
+
+            Tiger pumpkin = new Tiger(100.4f);
+
+            Console.WriteLine(new WeightFormatter(pumpkin, WeightUnitType.kilogram, new CultureInfo("en-US")));
+            Console.WriteLine(new WeightFormatter(pumpkin, WeightUnitType.kilogram, new CultureInfo("de-DE")));
+            Console.WriteLine();
+            Console.WriteLine(new WeightFormatter(pumpkin, WeightUnitType.ounce, new CultureInfo("en-US")));
+            Console.WriteLine(new WeightFormatter(pumpkin, WeightUnitType.ounce, new CultureInfo("de-DE")));
+            Console.WriteLine();
+            Console.WriteLine(new WeightFormatter(pumpkin));
+
+
+
+
+            ;
+
+            //IFormattable weightformatter = new WeightFormatter(pumpkin);
 
 
 
